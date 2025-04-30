@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+        <PackageReference Include="PDFsharp" Version="6.1.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Assets\WhiteHonda.png"/>
+        <None Remove="Assets\WhiteHondaGPT.png"/>
+        <None Remove="Assets\WhiteHondaWing.png"/>
+        <None Remove="Assets\WhiteHondaWingRight.png"/>
+        <None Remove="Assets\ProvaLogoInteroHonda.png"/>
+        <AvaloniaResource Include="Assets\ProvaLogoInteroHonda.png"/>
+        <None Remove="Assets\WhiteHondaWingLeft.png"/>
+        <None Remove="Assets\LogoHondaWhiteNoSfondo0.png"/>
+        <AvaloniaResource Include="Assets\LogoHondaWhiteNoSfondo0.png"/>
+        <None Remove="Assets\LogoHondaWhiteNoSfondo1.png"/>
+        <None Remove="Assets\LogoHondaWhiteNoSfondo2.png"/>
+        <None Remove="Assets\LogoHondaWhiteNoSfondo3.png"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Resources\Cronologia.txt"/>
+        <None Remove="Resources\ModelliAggiunti.txt"/>
+        <None Remove="Resources\RichiesteAggiunte.txt"/>
+        <None Remove="Resources\honda 2024 manuali\CB500 Hornet - CBR500R - NX500 YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\CB650R - CBR650R YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\CBR600R YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\CBR1000RR-R YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\CRF1100 Africa Twin YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\EM1 e YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\Forza 125 YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\Forza 350 YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\GL1800 Gold Wing YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\SH Mode 125 YM24.pdf"/>
+        <None Remove="Resources\honda 2024 manuali\SH 125-150 YM24.pdf"/>
+    </ItemGroup>
+</Project>
