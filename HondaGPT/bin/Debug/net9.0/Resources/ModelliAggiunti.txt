@@ -1,5 +1,0 @@
-Zontes G1 125;Resources\Manuali\Zontes G1 125.pdf
-Aprilia SR 50;Resources\Manuali\Aprilia SR 50.pdf
-Aprilia SR 125;Resources\Manuali\Aprilia SR 125.pdf
-Aprilia SR 150;Resources\Manuali\Aprilia SR 150.pdf
-Malaguti Phantom F12;Resources\Manuali\Malaguti Phantom F12.pdf
