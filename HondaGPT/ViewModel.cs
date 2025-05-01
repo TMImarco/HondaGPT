@@ -257,36 +257,36 @@ public partial class ViewModel : ObservableObject
     #region Animazione
 
     private void InizioAnimazione()
-            {
-                // Reset opacità
-                Opacity0 = 0;
-                Opacity1 = 0;
-                Opacity2 = 0;
-                Opacity3 = 0;
-            
-                // Reset del contatore
-                _dotCount = 0;
-            
-                // Rende visibile l'animazione
-                IsVisibileCaricamento = true;
-            
-                // Mappa degli aggiornamenti per ogni pallino
-                var toggleActions = new Dictionary<int, Action>
-                {
-                    { 0, () => Opacity0 = Opacity0 == 0 ? 1 : 0 },
-                    { 1, () => Opacity1 = Opacity1 == 0 ? 1 : 0 },
-                    { 2, () => Opacity2 = Opacity2 == 0 ? 1 : 0 },
-                    { 3, () => Opacity3 = Opacity3 == 0 ? 1 : 0 }
-                };
-            
-                _loadingTimer = new Timer(_ =>
-                {
-                    _dotCount = (_dotCount + 1) % 4;
-            
-                    // Esegue l'azione corrispondente al pallino corrente
-                    if (toggleActions.TryGetValue(_dotCount, out var action)) action.Invoke();
-                }, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(500));
-            }
+    {
+        // Reset opacità
+        Opacity0 = 0;
+        Opacity1 = 0;
+        Opacity2 = 0;
+        Opacity3 = 0;
+
+        // Reset del contatore
+        _dotCount = 0;
+
+        // Rende visibile l'animazione
+        IsVisibileCaricamento = true;
+
+        // Mappa degli aggiornamenti per ogni pallino
+        var toggleActions = new Dictionary<int, Action>
+        {
+            { 0, () => Opacity0 = Opacity0 == 0 ? 1 : 0 },
+            { 1, () => Opacity1 = Opacity1 == 0 ? 1 : 0 },
+            { 2, () => Opacity2 = Opacity2 == 0 ? 1 : 0 },
+            { 3, () => Opacity3 = Opacity3 == 0 ? 1 : 0 }
+        };
+
+        _loadingTimer = new Timer(_ =>
+        {
+            _dotCount = (_dotCount + 1) % 4;
+
+            // Esegue l'azione corrispondente al pallino corrente
+            if (toggleActions.TryGetValue(_dotCount, out var action)) action.Invoke();
+        }, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(500));
+    }
 
     private void FineAnimazione()
     {
@@ -417,7 +417,7 @@ public partial class ViewModel : ObservableObject
     [RelayCommand]
     public void EliminaModello()
     {
-        if (ModelloDaEliminare == null)
+        if (ModelloDaEliminare != null)
         {
 
             var nomeDaEliminare = ModelloDaEliminare.Nome?.Trim();

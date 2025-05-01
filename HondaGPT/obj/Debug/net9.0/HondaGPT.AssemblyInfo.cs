@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HondaGPT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+828e60954f2ed7768797cd0858f74d67c6474f5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a07c154eb8eed7d1d52f4f5b1b1c1eee79ca709")]
 [assembly: System.Reflection.AssemblyProductAttribute("HondaGPT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HondaGPT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
