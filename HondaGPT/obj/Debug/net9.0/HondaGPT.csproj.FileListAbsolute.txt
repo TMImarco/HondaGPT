@@ -80,3 +80,4 @@ C:\Users\marco\Documents\1 Scuola\Prova esperta\HondaGPT\HondaGPT\bin\Debug\net9
 C:\Users\marco\Documents\1 Scuola\Prova esperta\HondaGPT\HondaGPT\bin\Debug\net9.0\PdfSharp.dll
 C:\Users\marco\Documents\1 Scuola\Prova esperta\HondaGPT\HondaGPT\bin\Debug\net9.0\de\PdfSharp.Charting.resources.dll
 C:\Users\marco\Documents\1 Scuola\Prova esperta\HondaGPT\HondaGPT\bin\Debug\net9.0\de\PdfSharp.resources.dll
+C:\Users\marco\Documents\1 Scuola\Prova esperta\HondaGPT\HondaGPT\obj\Debug\net9.0\HondaGPT.sourcelink.json

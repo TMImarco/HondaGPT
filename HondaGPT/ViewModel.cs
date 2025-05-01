@@ -77,7 +77,6 @@ public partial class ViewModel : ObservableObject
 
     [ObservableProperty] private bool _usaDomandaPreinpostata;
     [ObservableProperty] private double _valoreTemperatura;
-
     public ViewModel()
     {
         //cerca i modelli e i problemi/richieste salvati nel file e li aggiunge
@@ -258,33 +257,36 @@ public partial class ViewModel : ObservableObject
     #region Animazione
 
     private void InizioAnimazione()
-    {
-        // Reset opacità
-        Opacity0 = 0;
-        Opacity1 = 0;
-        Opacity2 = 0;
-        Opacity3 = 0;
-
-        // Rende visibile l'animazione
-        IsVisibileCaricamento = true;
-
-        // Mappa degli aggiornamenti per ogni pallino
-        var toggleActions = new Dictionary<int, Action>
-        {
-            { 0, () => Opacity0 = Opacity0 == 0 ? 1 : 0 },
-            { 1, () => Opacity1 = Opacity1 == 0 ? 1 : 0 },
-            { 2, () => Opacity2 = Opacity2 == 0 ? 1 : 0 },
-            { 3, () => Opacity3 = Opacity3 == 0 ? 1 : 0 }
-        };
-
-        _loadingTimer = new Timer(_ =>
-        {
-            _dotCount = (_dotCount + 1) % 4;
-
-            // Esegue l'azione corrispondente al pallino corrente
-            if (toggleActions.TryGetValue(_dotCount, out var action)) action.Invoke();
-        }, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(500));
-    }
+            {
+                // Reset opacità
+                Opacity0 = 0;
+                Opacity1 = 0;
+                Opacity2 = 0;
+                Opacity3 = 0;
+            
+                // Reset del contatore
+                _dotCount = 0;
+            
+                // Rende visibile l'animazione
+                IsVisibileCaricamento = true;
+            
+                // Mappa degli aggiornamenti per ogni pallino
+                var toggleActions = new Dictionary<int, Action>
+                {
+                    { 0, () => Opacity0 = Opacity0 == 0 ? 1 : 0 },
+                    { 1, () => Opacity1 = Opacity1 == 0 ? 1 : 0 },
+                    { 2, () => Opacity2 = Opacity2 == 0 ? 1 : 0 },
+                    { 3, () => Opacity3 = Opacity3 == 0 ? 1 : 0 }
+                };
+            
+                _loadingTimer = new Timer(_ =>
+                {
+                    _dotCount = (_dotCount + 1) % 4;
+            
+                    // Esegue l'azione corrispondente al pallino corrente
+                    if (toggleActions.TryGetValue(_dotCount, out var action)) action.Invoke();
+                }, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(500));
+            }
 
     private void FineAnimazione()
     {
@@ -362,7 +364,6 @@ public partial class ViewModel : ObservableObject
             d.Path = path;
             c.SalvaModello(modelloIntero, path);
             InserisciModelloOutput = "Modello inserito correttamente";
-            Console.WriteLine(FileCaricatoPath);
         }
         else
         {
@@ -417,54 +418,59 @@ public partial class ViewModel : ObservableObject
     public void EliminaModello()
     {
         if (ModelloDaEliminare == null)
-            return;
-
-        var nomeDaEliminare = ModelloDaEliminare.Nome?.Trim();
-        var pathDaEliminare = ModelloDaEliminare.Path?.Trim();
-        var filePathDaEliminare = ModelloDaEliminare.Path;
-
-        // Rimuovi da lista e observable collection
-        c.Documenti.RemoveAll(d =>
-            d.Nome.Trim() == nomeDaEliminare &&
-            d.Path.Trim() == pathDaEliminare);
-        Documents.Remove(ModelloDaEliminare);
-
-        c.ModelliPers.RemoveAll(d =>
-            d.Nome.Trim() == nomeDaEliminare &&
-            d.Path.Trim() == pathDaEliminare);
-        AddedModels.Remove(ModelloDaEliminare);
-
-        c.ModelliMoto.Remove(nomeDaEliminare);
-        BikeModels.Remove(nomeDaEliminare);
-
-        // Rimuovi dal file
-        if (File.Exists(c.ModelliAggiuntiPath))
         {
-            var righe = File.ReadAllLines(c.ModelliAggiuntiPath).ToList();
 
-            var righeDaTenere = righe.Where(riga =>
+            var nomeDaEliminare = ModelloDaEliminare.Nome?.Trim();
+            var pathDaEliminare = ModelloDaEliminare.Path?.Trim();
+            var filePathDaEliminare = ModelloDaEliminare.Path;
+
+            // Rimuovi da lista e observable collection
+            c.Documenti.RemoveAll(d =>
+                d.Nome.Trim() == nomeDaEliminare &&
+                d.Path.Trim() == pathDaEliminare);
+            Documents.Remove(ModelloDaEliminare);
+
+            c.ModelliPers.RemoveAll(d =>
+                d.Nome.Trim() == nomeDaEliminare &&
+                d.Path.Trim() == pathDaEliminare);
+            AddedModels.Remove(ModelloDaEliminare);
+
+            c.ModelliMoto.Remove(nomeDaEliminare);
+            BikeModels.Remove(nomeDaEliminare);
+
+            // Rimuovi dal file
+            if (File.Exists(c.ModelliAggiuntiPath))
             {
-                var parts = riga.Split(';');
-                if (parts.Length != 2) return true;
+                var righe = File.ReadAllLines(c.ModelliAggiuntiPath).ToList();
 
-                var nome = parts[0].Trim();
-                var path = parts[1].Trim();
+                var righeDaTenere = righe.Where(riga =>
+                {
+                    var parts = riga.Split(';');
+                    if (parts.Length != 2) return true;
 
-                // Tiene la riga solo se è diversa
-                return !(nome == nomeDaEliminare && path == pathDaEliminare);
-            }).ToList();
+                    var nome = parts[0].Trim();
+                    var path = parts[1].Trim();
 
-            File.WriteAllLines(c.ModelliAggiuntiPath, righeDaTenere);
+                    // Tiene la riga solo se è diversa
+                    return !(nome == nomeDaEliminare && path == pathDaEliminare);
+                }).ToList();
+
+                File.WriteAllLines(c.ModelliAggiuntiPath, righeDaTenere);
+            }
+
+            // Elimina fisicamente il file
+            try
+            {
+                if (File.Exists(filePathDaEliminare)) File.Delete(filePathDaEliminare);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Errore durante l'eliminazione del file: {ex.Message}");
+            }
         }
-
-        // Elimina fisicamente il file
-        try
+        else
         {
-            if (File.Exists(filePathDaEliminare)) File.Delete(filePathDaEliminare);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Errore durante l'eliminazione del file: {ex.Message}");
+            Console.WriteLine("Modello da eliminare null");
         }
     }
 
