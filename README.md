@@ -1,9 +1,13 @@
 # Prova esperta LLM Chat specializzata
 
+##Overview
+Progetto per la prova esperta del quarto anno del corso di informatica del ITT Eugenio Barsanti (As 2024-2025)
+Creazione di un programma per un'AI specializzata (che gira in locale).
+
 Framework: .NET 9.0 e Avalonia UI 11.2.8  
 Pacchetti usati: Community ToolKit.Mvvm 8.4.0, Newtonsoft.Json 13.0.3, PDFsharp 6.1.1  
-Porta server api: 4891  
-Server gpt4all ad ogni avvio accendere il server e selezionare i documenti nella chat del server.  
+Porta server api: 4891
+Servizio per AI locale: gpt4all  
 Funzioni:
 
 - [x] specializzazione su alcune moto honda (app rivolta ai meccanici)  
@@ -51,15 +55,6 @@ Funzioni:
 - [x] \[grafica\] modificare segnali che sta lavorando e mettere qualcosa di figo  
 - [ ] \[problema \- grafica\] sistemare la sequenza caricamento dopo la prima domanda  
 - [x] pulire e sistemare il codice
-
-## Da sapere
-
-1. Header richiesta  
-   1. apiUrl  
-   2. user  
-   3. temperatura  
-   4. tokens
-
 ## Fonti
 
 * [Documentazione Avalonia](https://docs.avaloniaui.net/) (grafica)  
