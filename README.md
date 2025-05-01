@@ -1,6 +1,6 @@
 # Prova esperta LLM Chat specializzata
 
-##Overview
+## Overview
 Progetto per la prova esperta del quarto anno del corso di informatica del ITT Eugenio Barsanti (As 2024-2025)
 Creazione di un programma per un'AI specializzata (che gira in locale).
 
