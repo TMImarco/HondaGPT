@@ -53,7 +53,7 @@ Funzioni:
 - [x] \[grafica\] mettere come watermark nella text box dove scrivi la domanda (scrivi domanda)  
 - [x] \[grafica\] mettere qualcosa che segnali che sta lavorando  
 - [x] \[grafica\] modificare segnali che sta lavorando e mettere qualcosa di figo  
-- [ ] \[problema \- grafica\] sistemare la sequenza caricamento dopo la prima domanda  
+- [x] \[problema \- grafica\] sistemare la sequenza caricamento dopo la prima domanda  
 - [x] pulire e sistemare il codice
 ## Fonti
 
