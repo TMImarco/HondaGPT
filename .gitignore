@@ -1,7 +1,6 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-/.idea/
 # Rider ignored files
 /contentModel.xml
 /projectSettingsUpdater.xml
@@ -12,3 +11,5 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Other
+.idea/
