@@ -2,6 +2,7 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
+/.idea
 /contentModel.xml
 /projectSettingsUpdater.xml
 /.idea.HondaGPT.iml
