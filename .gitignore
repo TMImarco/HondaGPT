@@ -13,6 +13,8 @@
 /dataSources.local.xml
 # Other
 .idea/
-.idea.HondaGPT/
+/.idea.HondaGPT/
+/.idea/
+
 .idea/.idea.HondaGPT/
 .idea/.idea.HondaGPT/.idea/
