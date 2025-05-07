@@ -1,6 +1,10 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/avalonia.xml
+/encoding.xml
+/indexLayout.xml
+/vcs.xml
 # Rider ignored files
 /contentModel.xml
 /projectSettingsUpdater.xml
